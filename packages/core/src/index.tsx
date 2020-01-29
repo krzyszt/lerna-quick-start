@@ -1,10 +1,37 @@
-import React from 'react';
+import React, { Fragment} from 'react';
 import ReactDOM from 'react-dom';
+import { createMuiTheme } from "@material-ui/core"
+import { ThemeProvider } from '@material-ui/core/styles';
+import CssBaseline from "@material-ui/core/CssBaseline";
+
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const theme = createMuiTheme({
+    typography: {
+      fontFamily: [
+        'acumin-pro',
+        'Roboto',
+        '"Helvetica Neue"',
+        'Arial',
+        'sans-serif'
+      ].join(','),
+    },
+  });
+
+const MOUNT_POINT = document.getElementById("root");
+
+const provider = (
+    <ThemeProvider theme={theme}>
+      <Fragment>
+            <CssBaseline />
+            <App />
+          </Fragment>
+    </ThemeProvider>
+  );
+
+ReactDOM.render(provider, MOUNT_POINT);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

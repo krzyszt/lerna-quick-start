@@ -6,6 +6,6 @@ import SpanCustom from "./index";
 const defaultText = "Dummy Text";
 
 storiesOf("SpanCustom", module).add(
-	"text test",
+	"default",
 	() => (<><SpanCustom text={defaultText}/> </>)
 )
