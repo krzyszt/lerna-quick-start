@@ -2,6 +2,7 @@
   "name": "@my-app/library",
   "version": "1.0.0",
   "main": "./lib/index.js",
+  "module": "./lib-esm/index.js",
   "types": "./lib/index.d.ts",
   "license": "MIT",
   "peerDependencies": {
@@ -21,6 +22,7 @@
     "typescript": "^3.7.5"
   },
   "scripts": {
-    "story": "start-storybook"
+    "story": "start-storybook",
+    "libbuild": "tsc && tsc --build tsconfig.esm.json"
   }
 }

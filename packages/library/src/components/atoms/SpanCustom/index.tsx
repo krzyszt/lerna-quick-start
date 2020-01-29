@@ -4,7 +4,7 @@ export interface SpanCustomProps {
     text: string;
 }
 
-const SpanCustom = (props: SpanCustomProps) => {
+export const SpanCustom = (props: SpanCustomProps) => {
     const { text} = props;
     return(<span>{text}</span>)
 }
