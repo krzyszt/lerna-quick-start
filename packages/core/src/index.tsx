@@ -1,13 +1,21 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from "react-redux";
+import { createBrowserHistory } from "history";
+import { ConnectedRouter } from "connected-react-router/immutable";
 import { createMuiTheme } from "@material-ui/core"
 import { ThemeProvider } from '@material-ui/core/styles';
-import CssBaseline from "@material-ui/core/CssBaseline";
+// import CssBaseline from "@material-ui/core/CssBaseline";
 
 import './index.css';
 import './styles/app.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import setupStore from "./reduxSetup";
+
+// Create redux store with history
+const history = createBrowserHistory();
+const store = setupStore(history);
 
 const theme = createMuiTheme({
   typography: {
@@ -25,9 +33,13 @@ const MOUNT_POINT = document.getElementById("root");
 
 const provider = (
   <ThemeProvider theme={theme}>
-    <div className="h-full h-screen">
-      <App />
-    </div>
+    <Provider store={store}>
+      <ConnectedRouter history={history}>
+        <div className="h-full h-screen">
+          <App />
+        </div>
+      </ConnectedRouter>
+    </Provider>
   </ThemeProvider>
 );
 
